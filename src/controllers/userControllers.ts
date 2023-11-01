@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { User } from "../models/User";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
 
 
@@ -39,4 +40,51 @@ const register = async (req: Request, res: Response) => {
   }
 }
 
-export {register}
+const login = async (req: Request, res: Response) => {
+  try {
+      const email = req.body.email
+      const password = req.body.password
+      const user = await User.findOneBy({
+          email: email
+      })
+      if (!user) {
+          return res.json( {
+              success: true,
+              message: "User on password incorrect", 
+          })
+      }
+      if (!bcrypt.compareSync(password, user.password)) {
+          return res.json( {
+              success: true,
+              message: "User on password incorrect", 
+          })
+      }
+      const token = jwt.sign(
+        { id: user.id, email, role: user.role },
+        "secreto",
+        {
+          expiresIn: "3h",
+        }
+      );
+      return res.json(
+          {
+              success: true,
+              message: `login user successfully`,
+              token: token
+           
+          }
+      )
+  } catch (error) {
+      return res.json((
+          {
+              success: false,
+              message: "can't login user",
+              error: error
+          }
+      ));
+  }
+}
+
+
+
+export {register, login}
