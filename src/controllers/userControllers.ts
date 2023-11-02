@@ -111,4 +111,36 @@ const profile = async (req: Request, res: Response) => {
   }
 }
 
-export {register, login, profile}
+const updateUser = async (req: Request, res: Response) => {
+  try {
+    const updatedUserData = req.body;
+    const userId = req.token.id;
+    const message = "Usuario actualizado correctamente";
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    if (!emailRegex.test(req.body.email)) {
+      return res.json({ message: "email format not valid" });
+    }
+
+    const encryptedPassword = bcrypt.hashSync(req.body.password, 10);
+
+    await User.update({ id: userId }, updatedUserData);
+
+    const updatedUser = await User.findOneBy({ id: userId });
+
+    const response = {
+      message,
+      user: updatedUser,
+      password: encryptedPassword,
+    };
+
+    return res.json(response);
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: "Hubo un error al actualizar el usuario" });
+  }
+};
+
+export {register, login, profile, updateUser}
