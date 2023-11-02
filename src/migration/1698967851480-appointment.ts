@@ -57,20 +57,6 @@ export class Appointment1698967851480 implements MigrationInterface {
                 onUpdate: "CURRENT_TIMESTAMP",
               },
             ],
-            foreignKeys: [
-              {
-                columnNames: ["tattoo_artist"],
-                referencedTableName: "tattoo-artists",
-                referencedColumnNames: ["id"],
-                onDelete: "CASCADE",
-              },
-              {
-                columnNames: ["client"],
-                referencedTableName: "users",
-                referencedColumnNames: ["id"],
-                onDelete: "CASCADE",
-              },
-            ],
           }),
           true
         );
