@@ -22,7 +22,7 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
       )
     }
 
-    req.token = jwt.verify(token, "secreto") as TokenDecoded
+    req.token = jwt.verify(token, process.env.JWT_SECRET as string) as TokenDecoded
 
     next()
   } catch (error) {
