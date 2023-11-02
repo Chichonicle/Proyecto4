@@ -143,4 +143,21 @@ const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-export {register, login, profile, updateUser}
+const deleteUserById = async (req: Request, res: Response) => {
+  try {
+      const userIdToDelete = req.body.id
+      const userDeleted = await User.delete(
+          {
+              id: parseInt(userIdToDelete)
+          }
+      )
+      if (userDeleted.affected) {
+          return res.json("Se ha eliminado correctamente el id " + userIdToDelete)
+      }
+      return res.json("No se ha podido eliminar el id " + userIdToDelete)
+  } catch (error) {
+      return res.json(error)
+  }
+}
+
+export {register, login, profile, updateUser, deleteUserById}
