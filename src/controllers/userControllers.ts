@@ -160,4 +160,20 @@ const deleteUserById = async (req: Request, res: Response) => {
   }
 }
 
-export {register, login, profile, updateUser, deleteUserById}
+const getUsers = async (req: Request, res: Response) => {
+  try {
+      // const users = await User.find()
+      const pageSize: any = req.query.skyp || 10
+      const page: any = req.query.page || 1
+
+      const skip =(page - 1) * pageSize;
+
+      const users = await User.find({
+        skip: skip,
+        take: pageSize,
+      })
+      return res.json(users)
+  } catch (error) { return res.json(error) }
+}
+
+export {register, login, profile, updateUser, deleteUserById, getUsers}

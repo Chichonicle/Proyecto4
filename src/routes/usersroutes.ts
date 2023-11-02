@@ -1,7 +1,7 @@
 import {Router} from "express";
-import { login, register, profile, updateUser, deleteUserById } from "../controllers/userControllers";
+import { login, register, profile, updateUser, deleteUserById, getUsers } from "../controllers/userControllers";
 import { auth } from "../middleware/auth";
-import { isSuperAdmin } from "../models/isSuperAdmin";
+import { isSuperAdmin } from "../middleware/isSuperAdmin";
 
 
 const router = Router()
@@ -11,5 +11,6 @@ router.post('/login', login)
 router.get('/profile', auth, profile)
 router.put('/update', auth, updateUser)
 router.delete('/delete',auth, isSuperAdmin, deleteUserById)
+router.get('/all',auth, isSuperAdmin, getUsers)
 
 export {router}
