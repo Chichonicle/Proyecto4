@@ -85,6 +85,30 @@ const login = async (req: Request, res: Response) => {
   }
 }
 
+const profile = async (req: Request, res: Response) => {
+  try {
+    const user = await User.findOneBy(
+      {
+        id: req.token.id
+      }
+    )
 
+    return res.json(
+      {
+        success: true,
+        message: "profile user retrieved",
+        data: user
+      }
+    )
+  } catch (error) {
+    return res.json(
+      {
+        success: false,
+        message: "user profile cant be retrieved",
+        error: error
+      }
+    )
+  }
+}
 
-export {register, login}
+export {register, login, profile}
