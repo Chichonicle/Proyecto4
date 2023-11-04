@@ -1,4 +1,6 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Appointment } from "./appointments";
+import { worker } from "./worker";
 
 
 @Entity("users")
@@ -27,5 +29,21 @@ export class User extends BaseEntity {
     @Column()
     updated_at!: Date;
 
+    @OneToMany(() => Appointment, (appointment) => appointment.userAppointment)
+    userAppointments!: Appointment[];
+  
+    @ManyToMany(() => worker)
+    @JoinTable({
+      name: "appointments",
+      joinColumn: {
+        name: "client",
+        referencedColumnName: "id",
+      },
+      inverseJoinColumn: {
+        name: "worker",
+        referencedColumnName: "id",
+      },
+    })
+    userTattoArtists!: worker[];
    
 }
