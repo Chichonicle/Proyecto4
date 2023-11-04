@@ -1,5 +1,5 @@
 import {Router} from "express";
-import { login, register, profile, updateUser, deleteUserById, getUsers, myAppointments } from "../controllers/userControllers";
+import { login, register, profile, updateUser, deleteUserById, getUsers, myAppointments, changeRole } from "../controllers/userControllers";
 import { auth } from "../middleware/auth";
 import { isSuperAdmin } from "../middleware/isSuperAdmin";
 
@@ -13,5 +13,7 @@ router.put('/update', auth, updateUser)
 router.delete('/delete',auth, isSuperAdmin, deleteUserById)
 router.get('/all',auth, isSuperAdmin, getUsers)
 router.get('/myAppointments',auth, myAppointments)
+router.put('/changerole', auth, isSuperAdmin, changeRole)
+
 
 export {router}

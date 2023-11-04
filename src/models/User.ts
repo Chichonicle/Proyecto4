@@ -44,6 +44,6 @@ export class User extends BaseEntity {
         referencedColumnName: "id",
       },
     })
-    userTattoArtists!: worker[];
+    Userworker!: worker[];
    
 }

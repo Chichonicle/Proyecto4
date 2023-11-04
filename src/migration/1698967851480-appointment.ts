@@ -57,6 +57,20 @@ export class Appointment1698967851480 implements MigrationInterface {
                 onUpdate: "CURRENT_TIMESTAMP",
               },
             ],
+            foreignKeys: [
+              {
+                columnNames: ["worker"],
+                referencedTableName: "worker",
+                referencedColumnNames: ["id"],
+                onDelete: "CASCADE",
+              },
+              {
+                columnNames: ["client"],
+                referencedTableName: "users",
+                referencedColumnNames: ["id"],
+                onDelete: "CASCADE",
+              },
+            ],
           }),
           true
         );

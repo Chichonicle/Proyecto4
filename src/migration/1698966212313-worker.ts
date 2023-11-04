@@ -38,7 +38,7 @@ export class Worker1698966212313 implements MigrationInterface {
                 name: "role",
                 type: "enum",
                 enum: ["user", "admin", "super_admin"],
-                default: '"user"',
+                default: '"admin"',
               },
               {
                 name: "licenseNumber",

@@ -12,7 +12,7 @@ export class worker extends BaseEntity {
   id!: number
 
   @Column()
-  user_name!: string
+  username!: string
 
   @Column()
   user_id!:number
@@ -50,7 +50,7 @@ export class worker extends BaseEntity {
         referencedColumnName: "id",
      },
 })
-TattoArtistUsers!:User[]
+workerusers!:User[]
 
 
 

@@ -180,8 +180,6 @@ const myAppointments = async (req: Request, res: Response) => {
     const message = "Your user appointments";
     if (req.token.id === req.body.id) {
       const userId = req.body.id;
-     
-      //paginacion
 
       const pageSize: any = parseInt(req.query.skip as string) || 5;
       const page: any = parseInt(req.query.skip as string) || 1;
@@ -192,7 +190,7 @@ const myAppointments = async (req: Request, res: Response) => {
         where: { client: userId },
         select: {
           id: true,
-          tattoo_artist: true,
+          worker: true,
           title: true,
           description: true,
           type: true,
@@ -230,4 +228,21 @@ const myAppointments = async (req: Request, res: Response) => {
   }
 };
 
-export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments}
+const changeRole = async (req: Request, res: Response) => {
+  try {
+      const userIdToUpdate = req.body.id
+      const userUpdate = await User.findOneBy(
+          {
+              id: parseInt(userIdToUpdate)
+          })
+      if (userUpdate!) {
+          await User.update(userIdToUpdate, req.body)
+          return res.json("Se ha modificado correctamente")
+      }
+      return res.json("No se ha encontrado el usuario a modificar")
+  } catch (error) {
+      return res.json(error)
+  }
+}
+
+export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments, changeRole}

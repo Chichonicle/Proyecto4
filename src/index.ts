@@ -1,14 +1,16 @@
 import express from "express";
 import {router as routerUsers} from "./routes/usersroutes";
+import { router as routerWorkers} from "./routes/workerroutes";
 import { AppDataSource } from "./db";
 
 const app = express()
 
 app.use(express.json())
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4000
 
 app.use('/users', routerUsers)
+app.use('/workers', routerWorkers)
 
 AppDataSource.initialize()
     .then(() => {
