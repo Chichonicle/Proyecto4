@@ -6,6 +6,7 @@ import { Worker1698966212313 } from "./migration/1698966212313-worker"
 import { Appointment1698967851480 } from "./migration/1698967851480-appointment"
 import { worker } from "./models/worker"
 import "dotenv/config"
+import { Appointment } from "./models/appointments"
 
 
 
@@ -17,7 +18,7 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    entities: [User, worker],
+    entities: [User, worker, Appointment],
     migrations:[User1698858773796, 
                 Worker1698966212313,
                 Appointment1698967851480],

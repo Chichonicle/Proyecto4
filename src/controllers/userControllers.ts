@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { User } from "../models/User";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
-
+import { Appointment } from "../models/appointments"
 
 const register = async (req: Request, res: Response) => {
     try {
@@ -175,5 +175,59 @@ const getUsers = async (req: Request, res: Response) => {
       return res.json(users)
   } catch (error) { return res.json(error) }
 }
+const myAppointments = async (req: Request, res: Response) => {
+  try {
+    const message = "Your user appointments";
+    if (req.token.id === req.body.id) {
+      const userId = req.body.id;
+     
+      //paginacion
 
-export {register, login, profile, updateUser, deleteUserById, getUsers}
+      const pageSize: any = parseInt(req.query.skip as string) || 5;
+      const page: any = parseInt(req.query.skip as string) || 1;
+
+      const skip = (page - 1) * pageSize;
+
+      const myAppointments = await Appointment.find({
+        where: { client: userId },
+        select: {
+          id: true,
+          tattoo_artist: true,
+          title: true,
+          description: true,
+          type: true,
+          appointment_date: true,
+          appointment_turn: true,
+        },
+        relations: {
+          userAppointment: true,
+          workerAppointment: true,
+        },
+
+        skip: skip,
+        take: pageSize,
+      });
+
+      const filteredAppointments = myAppointments.map((appointment) => ({
+        Appointment_id: appointment.id,
+        title: appointment.title,
+        description: appointment.description,
+        appointment_date: appointment.appointment_date,
+        appointment_turn: appointment.appointment_turn,
+        worker: appointment.workerAppointment.username,
+        Client: appointment.userAppointment.username,
+      }));
+
+      const response = {
+        message: message,
+        myAppointments: filteredAppointments,
+      };
+
+      return res.json(response);
+    }
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments}

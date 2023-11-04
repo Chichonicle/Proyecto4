@@ -4,7 +4,7 @@ import { worker } from "./worker"
 
 
 
-@Entity("appointments")
+@Entity("Appointments")
 export class Appointment extends BaseEntity{
 
    @PrimaryGeneratedColumn()
