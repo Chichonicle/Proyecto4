@@ -99,6 +99,36 @@ const update = async (req: Request, res: Response) => {
   }
 };
 
+const deleteAppointment = async (req: Request, res: Response) => {
+    try {
+      if (req.token.id === req.body.user_id) {
+        const appointmentId = req.body.id;
+        const messageReturn = "Appointment deleted";
+  
+        const appointmentToRemove = await Appointment.findOneBy({
+          id: parseInt(appointmentId),
+        });
+  
+        if (!appointmentToRemove) {
+          return res.status(404).json({ message: "Appointment not found" });
+        }
+  
+        if (appointmentToRemove.client === req.body.user_id){
+        await Appointment.delete(appointmentId);
+  
+        const response = {
+          message: messageReturn,
+          appointmentRemoved: appointmentToRemove,
+        };
+  
+        return res.json(response);
+      }  
+        }
+  
+        
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
+  };
 
-
-export { create, update};
+export { create, update, deleteAppointment};
