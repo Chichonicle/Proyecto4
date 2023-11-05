@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { worker } from "../models/worker"
 import bcrypt from "bcrypt"
 import { User } from "../models/User"
+import { Appointment } from "../models/appointments"
 
 
 
@@ -54,5 +55,58 @@ const register = async (req: Request, res: Response) => {
     }
   }
 
+const workerAppointments = async (req: Request, res: Response) => {
+  try {
+    if (req.token.id === req.body.id) {
 
-  export {register}
+
+    
+
+      
+
+      const workerId = req.body.worker_id;
+      const pageSize: any = parseInt(req.query.skip as string) || 5;
+      const page: any = parseInt(req.query.skip as string) || 1;
+      const skip = (page - 1) * pageSize;
+      const workerAppointments = await Appointment.find({
+        where: { worker: workerId },
+
+        relations: {
+          userAppointment: true,
+        },
+
+        skip: skip,
+        take: pageSize,
+      });
+      const message = "Your tattoo appointments";
+
+      const filteredAppointments = workerAppointments.map(
+        (appointment) => ({
+          Appointment_id: appointment.id,
+          title: appointment.title,
+          description: appointment.description,
+          appointment_date: appointment.appointment_date,
+          appointment_turn: appointment.appointment_turn,
+          Client: appointment.userAppointment.username,
+        })
+      );
+
+      const response = {
+        message,
+        myAppointments: filteredAppointments,
+      };
+
+      return res.json(response);
+    }
+  } catch (error: any) {
+    return res.status(500).json({
+      success: false,
+      message: "cant find appointments",
+      error: error,
+    });
+  }
+};
+  
+
+
+  export {register, workerAppointments}
