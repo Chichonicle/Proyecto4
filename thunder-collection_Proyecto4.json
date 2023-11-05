@@ -1,0 +1,309 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Proyecto4",
+    "dateExported": "2023-11-05T02:23:55.393Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "df915394-2aaa-4772-b32d-7124e6334609",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/register",
+            "url": "localhost:3000/users/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-11-01T17:34:43.795Z",
+            "modified": "2023-11-04T17:34:48.861Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"Psyduck\",\n  \"email\": \"psyduck@gmail.com\",\n  \"password\": \"psyduck\"\n}\n  \n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "03c761e0-83e0-44e0-a121-709ef1f6a0b9",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/login",
+            "url": "localhost:3000/users/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-11-01T18:24:11.409Z",
+            "modified": "2023-11-05T02:12:59.253Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"goku@gmail.com\",\n  \"password\": \"goku\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "cbfc060d-8df4-4a4e-b2aa-fcf1453a56fe",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/profile",
+            "url": "localhost:3000/users/profile",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-11-02T08:32:56.902Z",
+            "modified": "2023-11-04T14:11:38.070Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"Chichonicle@chichonicle.com\",\n  \"password\": \"1234\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJDaGljaG9uaWNsZUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY5OTEwNjk5NCwiZXhwIjoxNjk5MTE3Nzk0fQ.RkU_5Wz3pUoDeOai20Ki4E6pRdynuR5IFXEEsNxYQDg"
+            },
+            "tests": []
+        },
+        {
+            "_id": "84e072ef-af28-45c0-938d-0c03e5848aee",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/update",
+            "url": "localhost:3000/users/update",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-11-02T12:28:00.784Z",
+            "modified": "2023-11-02T12:28:00.784Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"Chichonicle@hotmail.com\",\n  \"password\": \"1234\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJDaGljaG9uaWNsZUBjaGljaG9uaWNsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY5ODkyNzgyNywiZXhwIjoxNjk4OTM4NjI3fQ.URW8Wjzt-SBFFkRPnu8nukm9vf_zbZ_oUxM0O-Y8AiE"
+            },
+            "tests": []
+        },
+        {
+            "_id": "5db9543a-9e74-4d45-92e7-cc91ae975ea0",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/all",
+            "url": "localhost:3000/users/all",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-11-02T22:34:08.690Z",
+            "modified": "2023-11-02T22:34:08.690Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJDaGljaG9uaWNsZUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2OTg5NjQ0MTYsImV4cCI6MTY5ODk3NTIxNn0.BGiQy0AnXjZNieOabdf9kvu7BfmuCxhg7LNfDLdWeK4"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1d0434dc-1c57-469c-b185-152ad3de192b",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/delete/",
+            "url": "localhost:3000/users/delete/",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-11-04T13:26:24.391Z",
+            "modified": "2023-11-04T13:26:24.391Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\" : 2\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJDaGljaG9uaWNsZUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2OTkxMDQyODYsImV4cCI6MTY5OTExNTA4Nn0.uyRmJJWjmkDHUcn6Ukf7MlVJHVdsq5uJZVJIwbn3MKw"
+            },
+            "tests": []
+        },
+        {
+            "_id": "cda38dc7-5f82-4c43-af6d-a8a31c525859",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/changerole",
+            "url": "localhost:3000/users/changerole",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2023-11-04T16:11:15.940Z",
+            "modified": "2023-11-04T17:23:26.692Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"3\",\n  \"role\": \"admin\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJDaGljaG9uaWNsZUBnbWFpbC5jb20iLCJyb2xlIjoic3VwZXJfYWRtaW4iLCJpYXQiOjE2OTkxMDg1NTIsImV4cCI6MTY5OTExOTM1Mn0.iidJ7j2GkV2o0HKQnvWd8d76yn6kaWuqZssOMwuU1vY"
+            },
+            "tests": []
+        },
+        {
+            "_id": "de6101d2-d5e6-4665-ad22-13d1b4cae7a4",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/workers/registerworker",
+            "url": "localhost:3000/workers/registerworker",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-11-04T16:55:05.232Z",
+            "modified": "2023-11-04T17:24:55.952Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\": 5,\n  \"username\": \"Gohan\",\n  \"email\": \"gohan@gmail.com\",\n  \"password\": \"gohan\",\n  \"licenseNumber\": \"125695478558\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJnb2t1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5OTExNDQxNSwiZXhwIjoxNjk5MTI1MjE1fQ.m-tSiI5cCp9eauCidVMY2Y8Bu1_glyPEKV4gpK_Hsxg"
+            },
+            "tests": []
+        },
+        {
+            "_id": "ed0801a4-a5ab-4d7e-a22f-7c50bcd8ee90",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/appointments/create",
+            "url": "localhost:3000/appointments/create",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2023-11-05T00:50:27.219Z",
+            "modified": "2023-11-05T01:33:58.281Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Tatuaje pierna\",\n  \"description\": \"Tatuaje para la pierna de vegeta\",\n  \"worker\": 2,\n  \"client\": 6,\n  \"date\": \"2023/11/20\",\n  \"turn\": \"morning\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJwaWthY2h1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjk5MTQ0OTA0LCJleHAiOjE2OTkxNTU3MDR9.9YEd-jfkmVe2ec9eFDbLwhSYEwbM4OCmVIHZ0ijqS60"
+            },
+            "tests": []
+        },
+        {
+            "_id": "362625ad-15d5-4902-8f4a-b00297381c2d",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/appointments",
+            "url": "localhost:3000/users/appointments",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2023-11-05T01:04:27.776Z",
+            "modified": "2023-11-05T01:04:27.776Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 6\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJwaWthY2h1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjk5MTQ0OTA0LCJleHAiOjE2OTkxNTU3MDR9.9YEd-jfkmVe2ec9eFDbLwhSYEwbM4OCmVIHZ0ijqS60"
+            },
+            "tests": []
+        },
+        {
+            "_id": "79fe9503-e284-4626-b48b-feeb2b089b66",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/appointments/update",
+            "url": "localhost:3000/appointments/update",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2023-11-05T01:29:19.981Z",
+            "modified": "2023-11-05T01:29:19.981Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\": 6,\n  \"id\": 1,\n  \"title\": \"Tatuaje pierna\",\n  \"description\": \"Tatuaje para la pierna de gohan\",\n  \"worker\": 4,\n  \"client\": 6,\n  \"date\": \"2023/11/18\",\n  \"turn\": \"morning\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJwaWthY2h1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjk5MTQ0OTA0LCJleHAiOjE2OTkxNTU3MDR9.9YEd-jfkmVe2ec9eFDbLwhSYEwbM4OCmVIHZ0ijqS60"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a1abbad3-62a8-421f-a248-a318f2d563c8",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/appointments/delete",
+            "url": "localhost:3000/workers/delete",
+            "method": "DELETE",
+            "sortNum": 120000,
+            "created": "2023-11-05T01:36:20.356Z",
+            "modified": "2023-11-05T02:09:59.541Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\":4,\n  \"id\": 3\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJnb2hhbkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2OTkxNTAxNTQsImV4cCI6MTY5OTE2MDk1NH0.oOeforEB7khrGGULkk54KGVqWimJUdVnmnRAcIyNxR0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8939c1a7-c730-4fb7-bab7-07b5a7d30f13",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/workers/appointments",
+            "url": "localhost:3000/workers/appointments",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2023-11-05T02:17:13.412Z",
+            "modified": "2023-11-05T02:17:13.412Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 2\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJnb2t1QGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5OTE1MDM3OSwiZXhwIjoxNjk5MTYxMTc5fQ.PfcYk_0UfzdIpnAgtnoMWkZIW5ai0cg182jvwi-Yh_w"
+            },
+            "tests": []
+        },
+        {
+            "_id": "ff0cb2f8-faba-49bf-944f-7e5f4968aa23",
+            "colId": "f0afdaa2-2afc-4b72-8ddb-f3aa3d13d638",
+            "containerId": "",
+            "name": "localhost:3000/users/allworkers",
+            "url": "localhost:3000/users/allworkers",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2023-11-05T02:23:12.215Z",
+            "modified": "2023-11-05T02:23:12.215Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

@@ -3,6 +3,7 @@ import { User } from "../models/User";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
 import { Appointment } from "../models/appointments"
+import { worker } from "../models/worker";
 
 const register = async (req: Request, res: Response) => {
     try {
@@ -246,4 +247,29 @@ const changeRole = async (req: Request, res: Response) => {
   }
 }
 
-export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments, changeRole}
+const getWorkers = async (req: Request, res: Response) => {
+  try {
+    const workers = await worker.find({
+      select: {
+        id: true,
+        username: true,
+        licenseNumber:true,
+      
+      },
+    });
+
+    return res.json({
+      message: "Tattoo artist list",
+      workers,
+    });
+  } catch {
+    return res.json({
+      success: true,
+      message: "cant retrieve tattoo artist list",
+    });
+  }
+};
+
+
+
+export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments, changeRole, getWorkers}
