@@ -21,9 +21,6 @@ export class Appointment extends BaseEntity{
 
   @Column()
   client!:number
-
-  @Column()
-  type!:string
   
   @Column()
   appointment_date!:string

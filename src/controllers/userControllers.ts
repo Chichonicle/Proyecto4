@@ -181,6 +181,8 @@ const myAppointments = async (req: Request, res: Response) => {
     if (req.token.id === req.body.id) {
       const userId = req.body.id;
 
+      
+
       const pageSize: any = parseInt(req.query.skip as string) || 5;
       const page: any = parseInt(req.query.skip as string) || 1;
 
@@ -193,10 +195,10 @@ const myAppointments = async (req: Request, res: Response) => {
           worker: true,
           title: true,
           description: true,
-          type: true,
           appointment_date: true,
           appointment_turn: true,
         },
+        
         relations: {
           userAppointment: true,
           workerAppointment: true,
@@ -205,7 +207,7 @@ const myAppointments = async (req: Request, res: Response) => {
         skip: skip,
         take: pageSize,
       });
-
+   
       const filteredAppointments = myAppointments.map((appointment) => ({
         Appointment_id: appointment.id,
         title: appointment.title,
@@ -220,7 +222,6 @@ const myAppointments = async (req: Request, res: Response) => {
         message: message,
         myAppointments: filteredAppointments,
       };
-
       return res.json(response);
     }
   } catch (error: any) {

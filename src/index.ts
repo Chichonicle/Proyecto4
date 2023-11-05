@@ -2,6 +2,7 @@ import express from "express";
 import {router as routerUsers} from "./routes/usersroutes";
 import { router as routerWorkers} from "./routes/workerroutes";
 import { AppDataSource } from "./db";
+import { router as routerAppointments} from "./routes/appointmentroutes";
 
 const app = express()
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 4000
 
 app.use('/users', routerUsers)
 app.use('/workers', routerWorkers)
+app.use('/appointments', routerAppointments)
 
 AppDataSource.initialize()
     .then(() => {
