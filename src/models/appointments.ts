@@ -12,6 +12,9 @@ export class Appointment extends BaseEntity{
 
   @Column()
   title!:string
+  
+  @Column()
+  description!:string
 
   @Column()
   worker!:number
