@@ -19,12 +19,7 @@ export class Appointment1698967851480 implements MigrationInterface {
                 type: "varchar",
                 length: "255",
               },
-              {
-                name: "description",
-                type: "varchar",
-                length: "255",
-              },
-    
+               
               {
                 name: "worker",
                 type: "int",
