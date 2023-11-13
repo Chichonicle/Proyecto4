@@ -33,7 +33,7 @@ const register = async (req: Request, res: Response) => {
 
       const newWorker = await worker.create({
         user_id: user_id,
-        username: username,
+        name: username,
         email: email,
         role: role,
         password: encryptedPassword,
@@ -87,7 +87,7 @@ const workerAppointments = async (req: Request, res: Response) => {
           description: appointment.description,
           appointment_date: appointment.appointment_date,
           appointment_turn: appointment.appointment_turn,
-          Client: appointment.userAppointment.username,
+          Client: appointment.userAppointment.name,
         })
       );
 

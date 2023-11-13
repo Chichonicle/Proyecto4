@@ -19,7 +19,7 @@ export class Worker1698966212313 implements MigrationInterface {
 
               },
               {
-                name: "username",
+                name: "name",
                 type: "varchar",
                 length: "255",
               },

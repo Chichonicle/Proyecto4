@@ -9,8 +9,10 @@ import { register, workerAppointments } from "../controllers/workerControllers";
 
 const router = Router()
 
-router.post('/registerworker', auth, admin, register)
-router.get('/appointments',auth, workerAppointments)
+// router.post('/registerworker', auth, admin, register)
+router.post('/registerworker', register)
+// router.get('/appointments',auth, admin, workerAppointments)
+router.get('/appointments', workerAppointments)
 
 
 

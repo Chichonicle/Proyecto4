@@ -8,7 +8,7 @@ import { worker } from "../models/worker";
 const register = async (req: Request, res: Response) => {
     try {
    
-      const username = req.body.username;
+      const name = req.body.name;
       const email = req.body.email;
       const password = req.body.password
   
@@ -20,7 +20,7 @@ const register = async (req: Request, res: Response) => {
       const encryptedPassword = bcrypt.hashSync(password, 10)
 
     const newUser = await User.create({
-      username: username,
+      name: name,
       email: email,
       password: encryptedPassword
     }).save()
@@ -215,8 +215,8 @@ const myAppointments = async (req: Request, res: Response) => {
         description: appointment.description,
         appointment_date: appointment.appointment_date,
         appointment_turn: appointment.appointment_turn,
-        worker: appointment.workerAppointment.username,
-        Client: appointment.userAppointment.username,
+        worker: appointment.workerAppointment.name,
+        Client: appointment.userAppointment.name,
       }));
 
       const response = {
@@ -252,20 +252,32 @@ const getWorkers = async (req: Request, res: Response) => {
     const workers = await worker.find({
       select: {
         id: true,
-        username: true,
-        licenseNumber:true,
-      
+        name: true,
+        licenseNumber: true,
+        proyects: {
+          id: true,
+          worker_id: false,
+          proyectName: true,
+          tattooname: true,
+          tattoo_url: true,
+          created_at: false,
+          updated_at: false,
+        }
       },
-    });
+      relations: {
+        proyects: true,
+      },
+    }
+  )
 
     return res.json({
-      message: "Tattoo artist list",
+      message: "Workers list",
       workers,
     });
   } catch {
     return res.json({
       success: true,
-      message: "cant retrieve tattoo artist list",
+      message: "cant retrieve workers list",
     });
   }
 };

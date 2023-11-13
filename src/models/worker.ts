@@ -13,7 +13,7 @@ export class worker extends BaseEntity {
   id!: number
 
   @Column()
-  username!: string
+  name!: string
 
   @Column()
   user_id!:number

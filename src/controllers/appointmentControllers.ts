@@ -5,6 +5,7 @@ const create = async (req: Request, res: Response) => {
   try {
     if (req.token.id === req.body.client) {
       const title = req.body.title;
+      const description = req.body.description;
       const worker = req.body.worker;
       const client = req.body.client;
       const date = req.body.date;
@@ -21,6 +22,7 @@ const create = async (req: Request, res: Response) => {
 
       const newAppointment = await Appointment.create({
         title: title,
+        description: description,
         worker: worker,
         client: client,
         appointment_date: formatedDate,
@@ -32,7 +34,8 @@ const create = async (req: Request, res: Response) => {
         message: "Appointment created succesfully",
         appointment: {
           Title: newAppointment.title,
-          worker: newAppointment.worker,
+          Description: newAppointment.description,
+          Worker: newAppointment.worker,
           Date: newAppointment.appointment_date,
           Turn: newAppointment.appointment_turn,
         },
@@ -59,6 +62,7 @@ const update = async (req: Request, res: Response) => {
 
       const id = req.body.id;
       const title = req.body.title;
+      const description = req.body.description;
       const worker = req.body.worker;
       const client = req.body.client;
       const date = req.body.date;
@@ -71,6 +75,7 @@ const update = async (req: Request, res: Response) => {
         {
           id: id,
           title: title,
+          description: description,
           worker: worker,
           client: client,
           appointment_date: date,

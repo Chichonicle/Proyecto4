@@ -3,10 +3,12 @@ import {router as routerUsers} from "./routes/usersroutes";
 import { router as routerWorkers} from "./routes/workerroutes";
 import { AppDataSource } from "./db";
 import { router as routerAppointments} from "./routes/appointmentroutes";
+import cors from "cors"
 
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 const PORT = process.env.PORT || 4000
 
