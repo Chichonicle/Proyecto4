@@ -223,9 +223,8 @@ const myAppointments = async (req: Request, res: Response) => {
         Client: appointment.userAppointment.name,
       }));
       
-      if (filteredAppointments.length == 0) {
-        return (error:any) =>(console.log(error))
-        
+      if (filteredAppointments.length === 0) {
+        return res.json({ message: "No hay citas disponibles." });
       }
 
       const response = {
