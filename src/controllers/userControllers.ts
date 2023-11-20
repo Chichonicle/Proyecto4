@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
 import { Appointment } from "../models/appointments"
 import { worker } from "../models/worker";
+import { Proyects } from "../models/Proyects";
 
 const register = async (req: Request, res: Response) => {
     try {
@@ -71,7 +72,8 @@ const login = async (req: Request, res: Response) => {
           {
               success: true,
               message: `login user successfully`,
-              token: token
+              token: token,
+              user: user
            
           }
       )
@@ -179,8 +181,10 @@ const getUsers = async (req: Request, res: Response) => {
 const myAppointments = async (req: Request, res: Response) => {
   try {
     const message = "Your user appointments";
-    if (req.token.id === req.body.id) {
-      const userId = req.body.id;
+    // if (req.token.id === req.body.id) {
+    //   const userId = req.body.id;
+
+      const userId = req.token.id
 
       
 
@@ -218,13 +222,18 @@ const myAppointments = async (req: Request, res: Response) => {
         worker: appointment.workerAppointment.name,
         Client: appointment.userAppointment.name,
       }));
+      
+      if (filteredAppointments.length == 0) {
+        return (error:any) =>(console.log(error))
+        
+      }
 
       const response = {
         message: message,
         myAppointments: filteredAppointments,
       };
       return res.json(response);
-    }
+    // }
   } catch (error: any) {
     return res.status(500).json({ error: error.message });
   }
@@ -254,6 +263,7 @@ const getWorkers = async (req: Request, res: Response) => {
         id: true,
         name: true,
         licenseNumber: true,
+        photo: true,
         proyects: {
           id: true,
           worker_id: false,
@@ -283,5 +293,35 @@ const getWorkers = async (req: Request, res: Response) => {
 };
 
 
+const getProyects = async (req: Request, res: Response) => {
+  
+  try {
+    
+    const proyects = await Proyects.find({
+      select: {
+          id: true,
+          worker_id: false,
+          proyectName: true,
+          tattooname: true,
+          tattoo_url: true,
+          created_at: false,
+          updated_at: false,
+        }
+      },
+    )  
 
-export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments, changeRole, getWorkers}
+    return res.json({
+      message: "proyects list",
+      proyects,
+    });
+  
+  } catch {
+    return res.json({
+      success: true,
+      message: "cant retrieve proyects list",
+    });
+  }
+};
+
+
+export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments, changeRole, getWorkers, getProyects}

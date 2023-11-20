@@ -56,6 +56,11 @@ export class Worker1698966212313 implements MigrationInterface {
                 default: "CURRENT_TIMESTAMP",
                 onUpdate: "CURRENT_TIMESTAMP",
               },
+              {
+                name: "poto",
+                type: "varchar",
+                length: "250"
+              }
               
             ]
             ,

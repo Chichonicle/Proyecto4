@@ -36,6 +36,9 @@ export class worker extends BaseEntity {
   @Column()
   updated_at!: Date
 
+  @Column()
+  photo!: string
+
   @OneToMany(() => Appointment, (appointment)=>appointment.workerAppointment)
   workerAppointments!:Appointment[];
 
