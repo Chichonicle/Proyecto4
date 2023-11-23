@@ -101,7 +101,7 @@ const update = async (req: Request, res: Response) => {
 
 const deleteAppointment = async (req: Request, res: Response) => {
     try {
-      if (req.token.id === req.body.user_id) {
+     
         const appointmentId = req.body.id;
         const messageReturn = "Appointment deleted";
   
@@ -123,7 +123,7 @@ const deleteAppointment = async (req: Request, res: Response) => {
   
         return res.json(response);
       }  
-        }
+
   
         
     } catch (error) {

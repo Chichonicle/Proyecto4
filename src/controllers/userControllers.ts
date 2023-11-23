@@ -166,7 +166,7 @@ const deleteUserById = async (req: Request, res: Response) => {
 const getUsers = async (req: Request, res: Response) => {
   try {
       // const users = await User.find()
-      const pageSize: any = req.query.skyp || 10
+      const pageSize: any = req.query.skyp || 999
       const page: any = req.query.page || 1
 
       const skip =(page - 1) * pageSize;
@@ -188,7 +188,7 @@ const myAppointments = async (req: Request, res: Response) => {
 
       
 
-      const pageSize: any = parseInt(req.query.skip as string) || 5;
+      const pageSize: any = parseInt(req.query.skip as string) || 99999;
       const page: any = parseInt(req.query.skip as string) || 1;
 
       const skip = (page - 1) * pageSize;
@@ -322,5 +322,60 @@ const getProyects = async (req: Request, res: Response) => {
   }
 };
 
+const allAppointments = async (req: Request, res: Response) => {
+  try {
+    const message = "Your user appointments";
+    // if (req.token.id === req.body.id) {
+    //   const userId = req.body.id;
 
-export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments, changeRole, getWorkers, getProyects}
+
+      const pageSize: any = parseInt(req.query.skip as string) || 99999;
+      const page: any = parseInt(req.query.skip as string) || 1;
+
+      const skip = (page - 1) * pageSize;
+
+      const myAppointments = await Appointment.find({
+        select: {
+          id: true,
+          worker: true,
+          title: true,
+          description: true,
+          appointment_date: true,
+          appointment_turn: true,
+        },
+        
+        relations: {
+          userAppointment: true,
+          workerAppointment: true,
+        },
+
+        skip: skip,
+        take: pageSize,
+      });
+   
+      const filteredAppointments = myAppointments.map((appointment) => ({
+        Appointment_id: appointment.id,
+        title: appointment.title,
+        description: appointment.description,
+        appointment_date: appointment.appointment_date,
+        appointment_turn: appointment.appointment_turn,
+        worker: appointment.workerAppointment.name,
+        Client: appointment.userAppointment.name,
+      }));
+      
+      if (filteredAppointments.length === 0) {
+        return res.json({ message: "No hay citas disponibles." });
+      }
+
+      const response = {
+        message: message,
+        myAppointments: filteredAppointments,
+      };
+      return res.json(response);
+    // }
+  } catch (error: any) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export {register, login, profile, updateUser, deleteUserById, getUsers, myAppointments, changeRole, getWorkers, getProyects, allAppointments}
